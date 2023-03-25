@@ -33,3 +33,20 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/movies', [MovieController::class, 'index'])->name('movie.search');
+
+Route::post('/watchlist', [MovieController::class, 'store'])->name('watchlist.store');
+
+Route::get('list', [MovieController::class, 'watchlist'])->name('get.list');
+
+Route::delete('/watchlist/{movie}', [MovieController::class, 'delete'])->name('watchlist.delete');
+
+Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
+
+Route::post('/movies/{id}/comment', [MovieController::class, 'storeComment'])->name('comments.store');
+
+Route::get('/comments/{id}/edit', [MovieController::class, 'edit'])->name('comments.edit');
+
+Route::put('/comments/{id}', [MovieController::class, 'update'])->name('comments.update');
+
+Route::delete('/comments/{id}', [MovieController::class, 'destroyComment'])->name('comments.destroy');
+
